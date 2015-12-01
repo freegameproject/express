@@ -3,3 +3,7 @@ extends layout
 block content
   h1= title
   p ello ! #{title}
+
+  ul
+    each val,index in doc
+      li=val.title
