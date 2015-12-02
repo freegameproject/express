@@ -28,6 +28,16 @@ router.get('/blog', function (req, res, next) {
 });
 
 
+
+router.get('/admin', function (req, res, next) {
+    res.render('admin', {title: 'admin'});
+});
+
+router.get('/login', function (req, res, next) {
+    res.render('login', {title: 'login'});
+});
+
+
 var findRestaurants = function (db, callback) {
     db.collection('blogs').find({}).toArray(function (err, arr) {
         callback(arr);

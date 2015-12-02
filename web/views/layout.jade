@@ -1,9 +1,21 @@
 doctype html
 html
-  head
-    title= title
-    meta(name="viewport",content="initial-scale=2.0,maximum-scale=1,user-scalable=no")
+    head
+        title= title
+        meta(name="viewport",content="initial-scale=2.0,maximum-scale=1,user-scalable=no")
 
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script(src='javascripts/jquery.min.js')
+    body
+        header
+            div(class="title")='Node'
+        div(class="mainNav")
+            a(href="index.html")='首页'
+        section(class="main")
+            block content
+        footer(class="footer")
+            div(class="clearfix")
+            div(class="thefooter")
+                p Copyright &copy
+                    script="document.write(new Date().getFullYear());"
+        script(src='javascripts/app.js')
