@@ -6,4 +6,5 @@ block content
 
   ul
     each val,index in doc
-      li=val.title
+      li
+        a(href="blog?id="+val._id)=val.title
