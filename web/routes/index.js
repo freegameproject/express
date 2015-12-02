@@ -28,7 +28,12 @@ router.get('/blog', function (req, res, next) {
 });
 
 
-
+router.get('/case', function (req, res, next) {
+    res.render('case', {title: '案例'});
+});
+router.get('/about', function (req, res, next) {
+    res.render('about', {title: '关于'});
+});
 router.get('/admin', function (req, res, next) {
     res.render('admin', {title: 'admin'});
 });
