@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
     MongoClient.connect(mongoUrl, function (err, db) {
         assert.equal(null, err);
         findRestaurants(db, function (doc) {
-            res.render('index', {title: ' node ', doc: doc});
+            res.render('index', {title: '哔哔嘻工作室', doc: doc});
             db.close();
         });
     });
@@ -21,7 +21,7 @@ router.get('/blog', function (req, res, next) {
     MongoClient.connect(mongoUrl, function (err, db) {
         assert.equal(null, err);
         findDocById(db, id, function (doc) {
-            res.render('blog', {title: ' node ', doc: doc[0]});
+            res.render('blog', {title: doc[0].title, doc: doc[0]});
             db.close();
         });
     });
@@ -29,10 +29,10 @@ router.get('/blog', function (req, res, next) {
 
 
 router.get('/case', function (req, res, next) {
-    res.render('case', {title: '案例'});
+    res.render('case', {title: '哔哔嘻工作室－案例'});
 });
 router.get('/about', function (req, res, next) {
-    res.render('about', {title: '关于'});
+    res.render('about', {title: '关于哔哔嘻工作室'});
 });
 router.get('/admin', function (req, res, next) {
     res.render('admin', {title: 'admin'});
