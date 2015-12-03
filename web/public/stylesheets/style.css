@@ -47,7 +47,9 @@ footer{
 
 }
 
-
+li{
+  list-style: none;
+}
 
 .title {
   font-size: 50px;
@@ -118,4 +120,10 @@ footer{
 }
 a:link{
   color: #000;
+}
+
+
+/* summernote */
+.note-editor.note-frame.panel.panel-default {
+  text-align: left;
 }

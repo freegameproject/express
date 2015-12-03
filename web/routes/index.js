@@ -38,8 +38,30 @@ router.get('/admin', function (req, res, next) {
     res.render('admin', {title: 'admin'});
 });
 
+router.get('/admin/add_blog', function (req, res, next) {
+    res.render('admin_add_blog', {title: 'admin'});
+});
+
 router.get('/login', function (req, res, next) {
     res.render('login', {title: 'login'});
+});
+
+
+router.post('/add_blog', function (req, res, next) {
+    var title = req.body.title;
+    var text = req.body.text;
+
+    MongoClient.connect(mongoUrl, function(err, db) {
+        assert.equal(null, err);
+        db.collection('blogs').insertOne( {
+            title:title,
+            text:text
+        }, function(err, result) {
+            assert.equal(err, null);
+            res.json(result);
+            db.close();
+        });
+    });
 });
 
 
