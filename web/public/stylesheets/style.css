@@ -127,3 +127,7 @@ a:link{
 .note-editor.note-frame.panel.panel-default {
   text-align: left;
 }
+
+img{
+  max-width: 100%;
+}
