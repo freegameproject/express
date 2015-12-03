@@ -16,8 +16,8 @@ router.get('/', function (req, res, next) {
     });
 });
 /* GET blog page. */
-router.get('/blog', function (req, res, next) {
-    var id = req.query.id;
+router.get('/blog/:id', function (req, res, next) {
+    var id = req.params.id;
     MongoClient.connect(mongoUrl, function (err, db) {
         assert.equal(null, err);
         findDocById(db, id, function (doc) {
