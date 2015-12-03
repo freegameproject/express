@@ -3,7 +3,7 @@ extends layout
 block content
     h1=title
     h2="add blog"
-    input(name='title',class='title',placeholder='这里输入标题')
+    input.title(name='title',placeholder='这里输入标题')
     div(name='text',class="summernote")=""
-    button(class="btn add_blog")="发布"
+    button.btn.add_blog="发布"
     script(src="/javascripts/admin_add_blog.js")
