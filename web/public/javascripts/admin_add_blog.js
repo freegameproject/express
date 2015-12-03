@@ -9,14 +9,26 @@ $(document).ready(function() {
     });
     $('.add_blog').click(function(){
         var html=$('.note-editable').html();
+        $('#addbloging').show();
+        $('#add_blog').hide();
         $.post('/add_blog',{
             title:$('input[name="title"]').val(),
             text:html
         },function(d){
             console.dir(d);
-            alert("已发布");
+            //alert("已发布");
+            $('#addbloging').hide();
+            $('#msg').show();
             $('input[name="title"]').val("");
             $('.note-editable').html("");
         });
     });
+
+    $('#write').click(function(){
+        $('#msg').hide();
+        $('#add_blog').show();
+    });
+    $('#addbloging').hide();
+    $('#msg').hide();
+
 });

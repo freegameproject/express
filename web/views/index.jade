@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
 
-  ul
+  ul.list-group
     each val,index in doc
-      li
+      li.list-group-item
         a(href="blog/"+val._id)=val.title

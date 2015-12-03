@@ -2,8 +2,14 @@ extends layout
 
 block content
     h1=title
-    h2="add blog"
-    input.title(name='title',placeholder='这里输入标题')
-    div(name='text',class="summernote")=""
-    button.btn.add_blog="发布"
-    script(src="/javascripts/admin_add_blog.js")
+    h2="添加文章"
+    div#addbloging
+        p='正在添加文章，请稍后。。。'
+    div#msg
+        p='已发布'
+        button#write.btn.btn-success='再写一篇'
+    div#add_blog
+        input.input_title.form-control(name='title',placeholder='这里输入标题')
+        div(name='text',class="summernote")=""
+        button.btn.btn-default.add_blog="发布"
+        script(src="/javascripts/admin_add_blog.js")
