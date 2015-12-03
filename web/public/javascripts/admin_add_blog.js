@@ -14,6 +14,9 @@ $(document).ready(function() {
             text:html
         },function(d){
             console.dir(d);
+            alert("已发布");
+            $('input[name="title"]').val("");
+            $('.note-editable').html("");
         });
     });
 });
