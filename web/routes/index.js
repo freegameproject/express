@@ -96,7 +96,7 @@ router.post('/uploadimg', function (req, res, next) {
                     break;
             }
             //console.log("SIZE:"+file.size);
-            var uploadDir = "./public/upload/" + fName;
+            var uploadDir = "public/upload/" + fName;
 
             imgs.push(fName);
 
