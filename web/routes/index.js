@@ -1,5 +1,6 @@
 var express = require('express');
 var fs = require('fs');
+var path=require('path');
 var router = express.Router();
 MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
@@ -96,7 +97,11 @@ router.post('/uploadimg', function (req, res, next) {
                     break;
             }
             //console.log("SIZE:"+file.size);
-            var uploadDir = "public/upload/" + fName;
+
+            //var uploadDir=path.resolve('public', 'upload')+fName;
+
+            //console.log(uploadDir);
+            var uploadDir = path.resolve('public','upload',fName);
 
             imgs.push(fName);
 
@@ -142,3 +147,6 @@ var findDocById = function (db, id, callback) {
 };
 
 module.exports = router;
+
+
+
