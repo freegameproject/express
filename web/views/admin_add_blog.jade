@@ -10,6 +10,8 @@ block content
         button#write.btn.btn-success='再写一篇'
     div#add_blog
         input.input_title.form-control(name='title',placeholder='这里输入标题')
-        div(name='text',class="summernote")=""
+        label.admin_add_blog_add_img.glyphicon.glyphicon-plus(for='upimg')='上传图片（支持多文件上传）'
+        input#upimg(type='file',multiple='multiple')
+        div#summernote(name='text')=""
         button.btn.btn-default.add_blog="发布"
         script(src="/javascripts/admin_add_blog.js")

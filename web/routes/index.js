@@ -1,9 +1,13 @@
 var express = require('express');
+var fs = require('fs');
 var router = express.Router();
 MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var ObjectId = require('mongodb').ObjectID;
 mongoUrl = 'mongodb://localhost:27017/web';
+//var crypto = require('crypto');
+//var md5=crypto.createHash('md5');
+var md5 = require('md5');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -51,17 +55,75 @@ router.post('/add_blog', function (req, res, next) {
     var title = req.body.title;
     var text = req.body.text;
 
-    MongoClient.connect(mongoUrl, function(err, db) {
+    MongoClient.connect(mongoUrl, function (err, db) {
         assert.equal(null, err);
-        db.collection('blogs').insertOne( {
-            title:title,
-            text:text
-        }, function(err, result) {
+        db.collection('blogs').insertOne({
+            title: title,
+            text: text
+        }, function (err, result) {
             assert.equal(err, null);
             res.json(result);
             db.close();
         });
     });
+});
+
+router.post('/uploadimg', function (req, res, next) {
+    //
+
+    var formidable = require("formidable");
+    var form = new formidable.IncomingForm();   //创建上传表单
+    form.parse(req, function(err, fields, files) {
+        var imgs=[];
+        for(var key in files){
+
+
+            var file = files[key];
+
+
+            //var fName = (new Date()).getTime();
+            var fName=md5(fs.readFileSync(file.path));
+
+            switch (file.type){
+                case "image/jpeg":
+                    fName = fName + ".jpg";
+                    break;
+                case "image/png":
+                    fName = fName + ".png";
+                    break;
+                default :
+                    fName =fName + ".png";
+                    break;
+            }
+            //console.log("SIZE:"+file.size);
+            var uploadDir = "./public/upload/" + fName;
+
+            imgs.push(fName);
+
+            fs.rename(file.path, uploadDir, function(err) {
+                if (err) {
+
+                }else{
+
+                }
+            });
+            //fs.renameSync(files.upload.path,"public/upload/"+ fName);
+        }
+        res.json(imgs);
+    });
+    /*
+    form.encoding = 'utf-8';		//设置编辑
+    form.uploadDir = 'public' + AVATAR_UPLOAD_FOLDER;	 //设置上传目录
+    form.keepExtensions = true;	 //保留后缀
+    form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小
+    form.parse(req, function (error, fields, files) {
+        var types = files.upload.name.split('.');
+        var date = new Date();
+        var ms = Date.parse(date);
+        fs.renameSync(files.upload.path, "/tmp/files" + ms + "." + String(types[types.length - 1]));
+    });
+    */
+    //
 });
 
 

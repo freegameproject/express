@@ -139,7 +139,25 @@ img {
     max-width: 100%;
 }
 
+/* up load */
+#upimg {
+    position: fixed;
+    top: -1000px;
+}
+
+.admin_add_blog_add_img{
+
+}
+
 /* add blog */
 .input_title {
+    margin: 20px auto;
+}
+.note-editable {
+    text-align: left;
+    height: 300px;
+    border: solid 1px #ccc;
+    padding: 10px;
+    overflow: scroll;
     margin: 20px auto;
 }
