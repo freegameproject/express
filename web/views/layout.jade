@@ -24,5 +24,7 @@ html
             div.clearfix
             div.thefooter
                 p Copyright &copy
-                    script="document.write(new Date().getFullYear());"
+                    script
+                        |document.write(new Date().getFullYear());
+                a(href='/admin')='管理'
         script(src='/javascripts/app.js')

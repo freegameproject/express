@@ -2,7 +2,10 @@ extends layout
 
 block content
     h1= title
-    form
-        input(type='text',name='user_name')
-        input(type='password',name='user_pass')
-        input(type='submit',value='login')
+    form(action='/login',method='post')
+        div.form-group
+            input.form-control(type='text',name='admin',placeholder='管理员账号')
+        div.form-group
+            input.form-control(type='password',name='pass',placeholder='管理员密码')
+        div.form-group
+            input.btn.btn-default(type='submit',value='登陆')

@@ -9,7 +9,15 @@ mongoUrl = 'mongodb://localhost:27017/web';
 //var crypto = require('crypto');
 //var md5=crypto.createHash('md5');
 var md5 = require('md5');
+var session = require('express-session');
 
+
+router.use(session({
+    secret: 'wb',
+    resave: false,
+    cookie: { maxAge: 60000 },
+    saveUninitialized: true
+}))
 /* GET home page. */
 router.get('/', function (req, res, next) {
     MongoClient.connect(mongoUrl, function (err, db) {
@@ -39,16 +47,65 @@ router.get('/case', function (req, res, next) {
 router.get('/about', function (req, res, next) {
     res.render('about', {title: '关于哔哔嘻工作室'});
 });
+
+
+
+
 router.get('/admin', function (req, res, next) {
+    var admin = req.session.admin;
+    if(admin!=true){
+        res.redirect('/login');
+    }
     res.render('admin', {title: 'admin'});
 });
 
+router.get('/logout', function (req, res, next) {
+
+    req.session.destroy(function(err) {
+        // cannot access session here
+        res.render('login', {title: 'login'});
+    })
+
+});
+
+
+
 router.get('/admin/add_blog', function (req, res, next) {
+    var admin = req.session.admin;
+    if(admin!=true){
+        res.redirect('/login');
+    }
     res.render('admin_add_blog', {title: 'admin'});
 });
 
 router.get('/login', function (req, res, next) {
-    res.render('login', {title: 'login'});
+    res.render('login', {title: '管理员登陆'});
+});
+router.post('/login', function (req, res, next) {
+    var admin = req.body.admin;
+    var pass = req.body.pass;
+    //
+    MongoClient.connect(mongoUrl, function (err, db) {
+        assert.equal(null, err);
+        db.collection('admin').find({admin: admin,pass:pass}).toArray(function (err, arr) {
+            if(err){
+                res.render('login', {title: 'login again'});
+            }else{
+                console.log(arr.length);
+
+                if(arr.length===1){
+                    req.session.admin=true;
+
+                    console.log('login success');
+                    res.redirect('/admin');
+                }else{
+                    res.redirect('/login');
+                }
+
+            }
+        });
+    });
+    //
 });
 
 
@@ -107,7 +164,7 @@ router.post('/uploadimg', function (req, res, next) {
 
             fs.rename(file.path, uploadDir, function(err) {
                 if (err) {
-
+                    res.json(err);
                 }else{
 
                 }
