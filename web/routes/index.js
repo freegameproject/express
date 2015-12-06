@@ -23,7 +23,7 @@ router.get('/', function (req, res, next) {
     MongoClient.connect(mongoUrl, function (err, db) {
         assert.equal(null, err);
         findRestaurants(db, function (doc) {
-            res.render('index', {title: '哔哔嘻工作室', doc: doc});
+            res.render('index', {title: '笔笔C', doc: doc});
             db.close();
         });
     });
@@ -42,10 +42,10 @@ router.get('/blog/:id', function (req, res, next) {
 
 
 router.get('/case', function (req, res, next) {
-    res.render('case', {title: '哔哔嘻工作室－案例'});
+    res.render('case', {title: '案例'});
 });
 router.get('/about', function (req, res, next) {
-    res.render('about', {title: '关于哔哔嘻工作室'});
+    res.render('about', {title: '关于'});
 });
 
 
