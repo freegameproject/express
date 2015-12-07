@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    h1=title
+    h2="添加文章"
+    div#addbloging
+        p='正在添加文章，请稍后。。。'
+    div#msg
+        p='已发布'
+        button#write.btn.btn-success='再写一篇'
+    div#add_blog
+        input(type='hidden',id='id',value='#{doc._id}')
+        input.input_title.form-control(name='title',placeholder='这里输入标题',value='#{doc.title}')
+        label.admin_add_blog_add_img.glyphicon.glyphicon-plus(for='upimg')='上传图片（支持多文件上传）'
+        input#upimg(type='file',multiple='multiple')
+        div#summernote(name='text')!=doc.text
+        button.btn.btn-default.add_blog="发布"
+        script(src="/javascripts/admin_edit_blog.js")

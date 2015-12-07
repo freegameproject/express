@@ -1,0 +1,6 @@
+extends layout
+
+block content
+    h1= doc.title
+    a(href='/edit/'+doc._id)='edit'
+    div.text!=doc.text

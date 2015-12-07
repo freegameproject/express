@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+
+  ul.list-group
+    each val,index in doc
+      li.list-group-item
+        a(href='blog/'+val._id)=val.title
+        a(href='edit/'+val._id)='edit'
+        a(href='del/'+val._id)='del'

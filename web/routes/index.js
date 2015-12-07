@@ -1,6 +1,6 @@
 var express = require('express');
 var fs = require('fs');
-var path=require('path');
+var path = require('path');
 var router = express.Router();
 MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
@@ -15,7 +15,7 @@ var session = require('express-session');
 router.use(session({
     secret: 'wb',
     resave: false,
-    cookie: { maxAge: 60000 },
+    cookie: {maxAge: 60000},
     saveUninitialized: true
 }))
 /* GET home page. */
@@ -23,7 +23,12 @@ router.get('/', function (req, res, next) {
     MongoClient.connect(mongoUrl, function (err, db) {
         assert.equal(null, err);
         findRestaurants(db, function (doc) {
-            res.render('index', {title: '笔笔C', doc: doc});
+            var admin = req.session.admin;
+            if (admin === true) {
+                res.render('index_admin', {title: '笔笔C', doc: doc});
+            } else {
+                res.render('index', {title: '笔笔C', doc: doc});
+            }
             db.close();
         });
     });
@@ -34,12 +39,64 @@ router.get('/blog/:id', function (req, res, next) {
     MongoClient.connect(mongoUrl, function (err, db) {
         assert.equal(null, err);
         findDocById(db, id, function (doc) {
-            res.render('blog', {title: doc[0].title, doc: doc[0]});
+            var admin = req.session.admin;
+            if (admin === true) {
+                res.render('admin_blog', {title: doc[0].title, doc: doc[0]});
+            }else{
+                res.render('blog', {title: doc[0].title, doc: doc[0]});
+            }
             db.close();
         });
     });
 });
 
+router.get('/edit/:id', function (req, res, next) {
+    var admin = req.session.admin;
+    if (admin != true) {
+        res.redirect('/login');
+    }
+
+    var id = req.params.id;
+    MongoClient.connect(mongoUrl, function (err, db) {
+        assert.equal(null, err);
+        findDocById(db, id, function (doc) {
+            res.render('edit_blog', {title: doc[0].title, doc: doc[0]});
+            db.close();
+        });
+    });
+});
+
+router.post('/edit/:id', function (req, res, next) {
+
+    var admin = req.session.admin;
+    if (admin === true) {
+        var id = req.params.id;
+        var title = req.body.title;
+        var text = req.body.text;
+
+        MongoClient.connect(mongoUrl, function (err, db) {
+            assert.equal(null, err);
+            //
+            db.collection('blogs').updateOne(
+                {_id: ObjectId(id)},
+                {
+                    $set: {
+                        title: title,
+                        text: text
+                    },
+                    $currentDate: {"lastModified": true}
+                }, function (err, results) {
+                    //res.redirect('/blog/'+id);
+                    res.json({state: 'ok', url: '/blog/' + id})
+                });
+            //
+        });
+    } else {
+        req.json({state: 'no', msg: '您不是管理员'})
+    }
+
+
+});
 
 router.get('/case', function (req, res, next) {
     res.render('case', {title: '案例'});
@@ -49,11 +106,9 @@ router.get('/about', function (req, res, next) {
 });
 
 
-
-
 router.get('/admin', function (req, res, next) {
     var admin = req.session.admin;
-    if(admin!=true){
+    if (admin != true) {
         res.redirect('/login');
     }
     res.render('admin', {title: 'admin'});
@@ -61,7 +116,7 @@ router.get('/admin', function (req, res, next) {
 
 router.get('/logout', function (req, res, next) {
 
-    req.session.destroy(function(err) {
+    req.session.destroy(function (err) {
         // cannot access session here
         res.render('login', {title: 'login'});
     })
@@ -69,10 +124,9 @@ router.get('/logout', function (req, res, next) {
 });
 
 
-
 router.get('/admin/add_blog', function (req, res, next) {
     var admin = req.session.admin;
-    if(admin!=true){
+    if (admin != true) {
         res.redirect('/login');
     }
     res.render('admin_add_blog', {title: 'admin'});
@@ -87,18 +141,18 @@ router.post('/login', function (req, res, next) {
     //
     MongoClient.connect(mongoUrl, function (err, db) {
         assert.equal(null, err);
-        db.collection('admin').find({admin: admin,pass:pass}).toArray(function (err, arr) {
-            if(err){
+        db.collection('admin').find({admin: admin, pass: pass}).toArray(function (err, arr) {
+            if (err) {
                 res.render('login', {title: 'login again'});
-            }else{
+            } else {
                 console.log(arr.length);
 
-                if(arr.length===1){
-                    req.session.admin=true;
+                if (arr.length === 1) {
+                    req.session.admin = true;
 
                     console.log('login success');
                     res.redirect('/admin');
-                }else{
+                } else {
                     res.redirect('/login');
                 }
 
@@ -131,18 +185,18 @@ router.post('/uploadimg', function (req, res, next) {
 
     var formidable = require("formidable");
     var form = new formidable.IncomingForm();   //创建上传表单
-    form.parse(req, function(err, fields, files) {
-        var imgs=[];
-        for(var key in files){
+    form.parse(req, function (err, fields, files) {
+        var imgs = [];
+        for (var key in files) {
 
 
             var file = files[key];
 
 
             //var fName = (new Date()).getTime();
-            var fName=md5(fs.readFileSync(file.path));
+            var fName = md5(fs.readFileSync(file.path));
 
-            switch (file.type){
+            switch (file.type) {
                 case "image/jpeg":
                     fName = fName + ".jpg";
                     break;
@@ -150,7 +204,7 @@ router.post('/uploadimg', function (req, res, next) {
                     fName = fName + ".png";
                     break;
                 default :
-                    fName =fName + ".png";
+                    fName = fName + ".png";
                     break;
             }
             //console.log("SIZE:"+file.size);
@@ -158,14 +212,14 @@ router.post('/uploadimg', function (req, res, next) {
             //var uploadDir=path.resolve('public', 'upload')+fName;
 
             //console.log(uploadDir);
-            var uploadDir = path.resolve('public','upload',fName);
+            var uploadDir = path.resolve('public', 'upload', fName);
 
             imgs.push(fName);
 
-            fs.rename(file.path, uploadDir, function(err) {
+            fs.rename(file.path, uploadDir, function (err) {
                 if (err) {
                     res.json(err);
-                }else{
+                } else {
 
                 }
             });
@@ -174,17 +228,17 @@ router.post('/uploadimg', function (req, res, next) {
         res.json(imgs);
     });
     /*
-    form.encoding = 'utf-8';		//设置编辑
-    form.uploadDir = 'public' + AVATAR_UPLOAD_FOLDER;	 //设置上传目录
-    form.keepExtensions = true;	 //保留后缀
-    form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小
-    form.parse(req, function (error, fields, files) {
-        var types = files.upload.name.split('.');
-        var date = new Date();
-        var ms = Date.parse(date);
-        fs.renameSync(files.upload.path, "/tmp/files" + ms + "." + String(types[types.length - 1]));
-    });
-    */
+     form.encoding = 'utf-8';		//设置编辑
+     form.uploadDir = 'public' + AVATAR_UPLOAD_FOLDER;	 //设置上传目录
+     form.keepExtensions = true;	 //保留后缀
+     form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小
+     form.parse(req, function (error, fields, files) {
+     var types = files.upload.name.split('.');
+     var date = new Date();
+     var ms = Date.parse(date);
+     fs.renameSync(files.upload.path, "/tmp/files" + ms + "." + String(types[types.length - 1]));
+     });
+     */
     //
 });
 
