@@ -72,7 +72,6 @@ router.post('/edit/:id', function (req, res, next) {
 
         MongoClient.connect(mongoUrl, function (err, db) {
             assert.equal(null, err);
-            //
             db.collection('blogs').updateOne(
                 {_id: ObjectId(id)},
                 {
@@ -85,13 +84,10 @@ router.post('/edit/:id', function (req, res, next) {
                     //res.redirect('/blog/'+id);
                     res.json({state: 'ok', url: '/blog/' + id})
                 });
-            //
         });
     } else {
         req.json({state: 'no', msg: '您不是管理员'})
     }
-
-
 });
 
 router.get('/case', function (req, res, next) {
@@ -100,7 +96,6 @@ router.get('/case', function (req, res, next) {
 router.get('/about', function (req, res, next) {
     res.render('about', {title: '关于'});
 });
-
 
 router.get('/admin', function (req, res, next) {
     var admin = req.session.admin;
@@ -113,12 +108,10 @@ router.get('/admin', function (req, res, next) {
 router.get('/logout', function (req, res, next) {
 
     req.session.destroy(function (err) {
-        // cannot access session here
         res.render('login', {title: 'login'});
     })
 
 });
-
 
 router.get('/admin/add_blog', function (req, res, next) {
     var admin = req.session.admin;
@@ -134,7 +127,6 @@ router.get('/login', function (req, res, next) {
 router.post('/login', function (req, res, next) {
     var admin = req.body.admin;
     var pass = req.body.pass;
-    //
     MongoClient.connect(mongoUrl, function (err, db) {
         assert.equal(null, err);
         db.collection('admin').find({admin: admin, pass: pass}).toArray(function (err, arr) {
@@ -151,11 +143,9 @@ router.post('/login', function (req, res, next) {
                 } else {
                     res.redirect('/login');
                 }
-
             }
         });
     });
-    //
 });
 
 
