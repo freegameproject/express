@@ -76,8 +76,8 @@ router.post('/edit/:id', function (req, res, next) {
                 {_id: ObjectId(id)},
                 {
                     $set: {
-                        title: title,
-                        text: text
+                        'title': title,
+                        'text': text
                     },
                     $currentDate: {"lastModified": true}
                 }, function (err, results) {
