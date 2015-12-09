@@ -10,7 +10,7 @@ var md5 = require('md5');
 var session = require('express-session');
 router.use(session({
     secret: 'wb',
-    resave: false,
+    resave: true,
     cookie: {maxAge: 60000},
     saveUninitialized: true
 }))
