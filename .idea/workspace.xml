@@ -21,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.925926">
-              <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.30662557">
+              <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -51,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.jade" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admin.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/views/admin.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0921659">
-              <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+            <state vertical-scroll-proportion="-3.0">
+              <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -156,12 +156,12 @@
         <option value="$PROJECT_DIR$/web/views/err.jade" />
         <option value="$PROJECT_DIR$/web/views/404.jade" />
         <option value="$PROJECT_DIR$/web/public/javascripts/admin_del_blog.js" />
-        <option value="$PROJECT_DIR$/web/routes/index.js" />
         <option value="$PROJECT_DIR$/web/views/layout_admin.jade" />
         <option value="$PROJECT_DIR$/web/views/admin_add_blog.jade" />
         <option value="$PROJECT_DIR$/web/views/admin_blog.jade" />
         <option value="$PROJECT_DIR$/web/views/index_admin.jade" />
         <option value="$PROJECT_DIR$/web/views/admin.jade" />
+        <option value="$PROJECT_DIR$/web/routes/index.js" />
       </list>
     </option>
   </component>
@@ -799,18 +799,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/routes/index.js">
+    <entry file="file://$PROJECT_DIR$/web/views/admin.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.925926">
-          <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+        <state vertical-scroll-proportion="-3.0">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/admin.jade">
+    <entry file="file://$PROJECT_DIR$/web/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0921659">
-          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.30662557">
+          <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
           <folding />
         </state>
       </provider>

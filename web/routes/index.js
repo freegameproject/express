@@ -115,9 +115,9 @@ router.get('/del/:id', function (req, res, next) {
             MongoClient.connect(mongoUrl, function (err, db) {
                 assert.equal(null, err);
                 db.collection('blogs').find({'_id': ObjectId(id)}).toArray(function (err, arr) {
-                    if(arr.length>0){
+                    if (arr.length > 0) {
                         res.render('del_blog', {title: arr[0].title, doc: arr[0]});
-                    }else{
+                    } else {
                         res.render('404', {});
                     }
                     db.close();
