@@ -14,7 +14,6 @@ router.use(session({
     cookie: {maxAge: 60000},
     saveUninitialized: true
 }))
-/* GET home page. */
 router.get('/', function (req, res, next) {
     MongoClient.connect(mongoUrl, function (err, db) {
         assert.equal(null, err);
@@ -29,62 +28,130 @@ router.get('/', function (req, res, next) {
         });
     });
 });
-/* GET blog page. */
 router.get('/blog/:id', function (req, res, next) {
     var id = req.params.id;
-    MongoClient.connect(mongoUrl, function (err, db) {
-        assert.equal(null, err);
-        findDocById(db, id, function (doc) {
-            var admin = req.session.admin;
-            if (admin === true) {
-                res.render('admin_blog', {title: doc[0].title, doc: doc[0]});
-            } else {
-                res.render('blog', {title: doc[0].title, doc: doc[0]});
-            }
-            db.close();
+    if (id.length === 24) {
+        MongoClient.connect(mongoUrl, function (err, db) {
+            assert.equal(null, err);
+            db.collection('blogs').find({'_id': ObjectId(id)}).toArray(function (err, arr) {
+                if (err) {
+                    res.render('err', {err: err});
+                } else {
+                    if (arr.length > 0) {
+                        var admin = req.session.admin;
+                        if (admin === true) {
+                            res.render('admin_blog', {title: arr[0].title, doc: arr[0]});
+                        } else {
+                            res.render('blog', {title: arr[0].title, doc: arr[0]});
+                        }
+                    } else {
+                        res.render('404', {});
+                    }
+                }
+                db.close();
+            });
         });
-    });
+    } else {
+        res.render('404', {});
+    }
 });
 
 router.get('/edit/:id', function (req, res, next) {
     var admin = req.session.admin;
     if (admin != true) {
         res.redirect('/login');
+    } else {
+        var id = req.params.id;
+        if (id.length === 24) {
+            MongoClient.connect(mongoUrl, function (err, db) {
+                assert.equal(null, err);
+                findDocById(db, id, function (doc) {
+                    res.render('edit_blog', {title: doc[0].title, doc: doc[0]});
+                    db.close();
+                });
+            });
+        } else {
+            res.render('404', {});
+        }
     }
-
-    var id = req.params.id;
-    MongoClient.connect(mongoUrl, function (err, db) {
-        assert.equal(null, err);
-        findDocById(db, id, function (doc) {
-            res.render('edit_blog', {title: doc[0].title, doc: doc[0]});
-            db.close();
-        });
-    });
 });
 
 router.post('/edit/:id', function (req, res, next) {
-
     var admin = req.session.admin;
     if (admin === true) {
         var id = req.params.id;
-        var title = req.body.title;
-        var text = req.body.text;
+        if (id.length === 24) {
+            var title = req.body.title;
+            var text = req.body.text;
+            MongoClient.connect(mongoUrl, function (err, db) {
+                assert.equal(null, err);
+                db.collection('blogs').updateOne(
+                    {'_id': ObjectId(id)},
+                    {
+                        $set: {
+                            'title': title,
+                            'text': text
+                        }
+                        //$currentDate: {"lastModified": true}
+                    }, function (err, results) {
+                        console.log(err);
+                        res.json({state: 'ok', url: '/blog/' + id})
+                    });
+            });
+        } else {
+            req.json({state: 'no', msg: 'id错误'});
+        }
+    } else {
+        req.json({state: 'no', msg: '您不是管理员'})
+    }
+});
 
-        MongoClient.connect(mongoUrl, function (err, db) {
-            assert.equal(null, err);
-            db.collection('blogs').updateOne(
-                {'_id': ObjectId(id)},
-                {
-                    $set: {
-                        'title': title,
-                        'text': text
+
+router.get('/del/:id', function (req, res, next) {
+    var admin = req.session.admin;
+    if (admin === true) {
+        var id = req.params.id;
+        if (id.length === 24) {
+            MongoClient.connect(mongoUrl, function (err, db) {
+                assert.equal(null, err);
+                db.collection('blogs').find({'_id': ObjectId(id)}).toArray(function (err, arr) {
+                    if(arr.length>0){
+                        res.render('del_blog', {title: arr[0].title, doc: arr[0]});
+                    }else{
+                        res.render('404', {});
                     }
-                    //$currentDate: {"lastModified": true}
-                }, function (err, results) {
-                    console.log(err);
-                    res.json({state: 'ok', url: '/blog/' + id})
+                    db.close();
                 });
-        });
+            });
+        } else {
+
+        }
+
+    } else {
+        res.redirect('/login');
+
+    }
+
+
+});
+
+router.post('/del/:id', function (req, res, next) {
+    var admin = req.session.admin;
+    if (admin === true) {
+        var id = req.params.id;
+        if (id.length === 24) {
+            MongoClient.connect(mongoUrl, function (err, db) {
+                assert.equal(null, err);
+                db.collection('blogs').deleteOne(
+                    {'_id': ObjectId(id)},
+                    function (err, results) {
+                        res.json({state: 'ok'});
+                    }
+                );
+            });
+        } else {
+            req.json({state: 'no', msg: 'id错误'});
+        }
     } else {
         req.json({state: 'no', msg: '您不是管理员'})
     }

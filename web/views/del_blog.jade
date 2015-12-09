@@ -1,0 +1,6 @@
+extends layout
+
+block content
+    h1= doc.title
+    button.btn(id=doc._id,@click='del')='确认删除'
+    script(src='/javascripts/admin_del_blog.js')
