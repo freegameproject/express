@@ -1,0 +1,32 @@
+doctype html
+html
+    head
+        title= title
+        meta(name="viewport",content="initial-scale=2.0,maximum-scale=1,user-scalable=no")
+        script(src='/javascripts/jquery.min.js')
+        script(src='/javascripts/jquery.lazyload.min.js')
+        script(src="/javascripts/bootstrap.min.js")
+        script(src="/javascripts/summernote.min.js")
+        script(src="/javascripts/vue.min.js")
+        link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+        link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
+        link(rel='stylesheet', href='/stylesheets/summernote.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        header
+            a(href='/logout')='注销'
+            a(href='/admin/add_blog')='添加文章'
+        div.mainNav
+            a.menu(href="/")='首页'
+            a.menu(href="/case")='案例'
+            a.menu(href="/about")='关于'
+        section.main
+            block content
+        footer.footer
+            div.clearfix
+            div.thefooter
+                p Copyright &copy
+                    script
+                        |document.write(new Date().getFullYear());
+                a(href='http://www.bibic.cc')='bibic'
+        script(src='/javascripts/app.js')
