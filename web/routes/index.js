@@ -73,7 +73,7 @@ router.post('/edit/:id', function (req, res, next) {
         MongoClient.connect(mongoUrl, function (err, db) {
             assert.equal(null, err);
             db.collection('blogs').updateOne(
-                {_id: ObjectId(id)},
+                {'_id': ObjectId(id)},
                 {
                     $set: {
                         'title': title,
@@ -81,7 +81,6 @@ router.post('/edit/:id', function (req, res, next) {
                     },
                     $currentDate: {"lastModified": true}
                 }, function (err, results) {
-                    //res.redirect('/blog/'+id);
                     res.json({state: 'ok', url: '/blog/' + id})
                 });
         });
