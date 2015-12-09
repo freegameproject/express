@@ -78,8 +78,8 @@ router.post('/edit/:id', function (req, res, next) {
                     $set: {
                         'title': title,
                         'text': text
-                    },
-                    $currentDate: {"lastModified": true}
+                    }
+                    //$currentDate: {"lastModified": true}
                 }, function (err, results) {
                     console.log(err);
                     res.json({state: 'ok', url: '/blog/' + id})
