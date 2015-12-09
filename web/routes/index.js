@@ -81,6 +81,7 @@ router.post('/edit/:id', function (req, res, next) {
                     },
                     $currentDate: {"lastModified": true}
                 }, function (err, results) {
+                    console.log(err);
                     res.json({state: 'ok', url: '/blog/' + id})
                 });
         });
@@ -132,12 +133,10 @@ router.post('/login', function (req, res, next) {
             if (err) {
                 res.render('login', {title: 'login again'});
             } else {
-                console.log(arr.length);
 
                 if (arr.length === 1) {
                     req.session.admin = true;
 
-                    console.log('login success');
                     res.redirect('/admin');
                 } else {
                     res.redirect('/login');
@@ -208,14 +207,12 @@ router.post('/uploadimg', function (req, res, next) {
 var findRestaurants = function (db, callback) {
     db.collection('blogs').find({}).toArray(function (err, arr) {
         callback(arr);
-        console.dir(arr);
     });
 };
 
 var findDocById = function (db, id, callback) {
     db.collection('blogs').find({'_id': ObjectId(id)}).toArray(function (err, arr) {
         callback(arr);
-        console.dir(arr);
     });
 };
 
