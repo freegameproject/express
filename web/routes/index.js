@@ -7,6 +7,17 @@ var assert = require('assert');
 var ObjectId = require('mongodb').ObjectID;
 mongoUrl = 'mongodb://localhost:27017/web';
 var md5 = require('md5');
+
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+router.use(cookieParser());
+router.use(session({
+    secret: 'wb',
+    resave: true,
+    cookie: {maxAge: 60000},
+    saveUninitialized: true
+}))
+/*
 var session = require('express-session');
 router.use(session({
     secret: 'wb',
@@ -14,6 +25,8 @@ router.use(session({
     cookie: {maxAge: 60000},
     saveUninitialized: true
 }))
+*/
+
 router.get('/', function (req, res, next) {
     MongoClient.connect(mongoUrl, function (err, db) {
         assert.equal(null, err);

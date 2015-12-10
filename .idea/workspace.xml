@@ -24,8 +24,18 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32357472">
-              <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.62403697">
+              <caret line="27" column="2" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -56,7 +66,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-3.0">
               <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-              <folding />
+              <folding>
+                <marker date="1449653181000" expanded="true" signature="27:85" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,7 +78,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.0">
               <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
-              <folding />
+              <folding>
+                <marker date="1449653111000" expanded="true" signature="27:112" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -87,18 +101,6 @@
             <state vertical-scroll-proportion="-0.0">
               <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="err.jade" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/views/err.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.8">
-              <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
-              <folding>
-                <marker date="1449651422000" expanded="true" signature="21:41" placeholder="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -143,7 +145,6 @@
         <option value="$PROJECT_DIR$/web/public/stylesheets/font-awesome.min.css" />
         <option value="$PROJECT_DIR$/web/views/index.jade" />
         <option value="$PROJECT_DIR$/web/public/javascripts/admin_add_blog.js" />
-        <option value="$PROJECT_DIR$/web/app.js" />
         <option value="$PROJECT_DIR$/web/views/login.jade" />
         <option value="$PROJECT_DIR$/web/public/javascripts/summernote.min.js" />
         <option value="$PROJECT_DIR$/web/public/stylesheets/style.css" />
@@ -161,6 +162,7 @@
         <option value="$PROJECT_DIR$/web/views/admin_blog.jade" />
         <option value="$PROJECT_DIR$/web/views/index_admin.jade" />
         <option value="$PROJECT_DIR$/web/views/admin.jade" />
+        <option value="$PROJECT_DIR$/web/app.js" />
         <option value="$PROJECT_DIR$/web/routes/index.js" />
       </list>
     </option>
@@ -503,7 +505,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-          <folding />
+          <folding>
+            <marker date="1449653111000" expanded="true" signature="27:112" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -534,6 +538,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -674,13 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24408284">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/bin/www">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -736,7 +734,7 @@
         <state vertical-scroll-proportion="-1.8">
           <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
           <folding>
-            <marker date="1449651422000" expanded="true" signature="21:41" placeholder="..." />
+            <marker date="1449651422000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -779,7 +777,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
-          <folding />
+          <folding>
+            <marker date="1449653111000" expanded="true" signature="27:112" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -803,14 +803,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.0">
           <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+          <folding>
+            <marker date="1449653181000" expanded="true" signature="27:85" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32357472">
-          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.62403697">
+          <caret line="27" column="2" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
           <folding />
         </state>
       </provider>
