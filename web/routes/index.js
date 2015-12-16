@@ -275,6 +275,9 @@ router.post('/uploadimg', function (req, res, next) {
     });
 });
 
+router.get('/h5/pintu', function (req, res, next) {
+    res.render('h5/pintu', {title: '拼图游戏'});
+});
 
 var findRestaurants = function (db, callback) {
     db.collection('blogs').find({}).toArray(function (err, arr) {
@@ -289,6 +292,3 @@ var findDocById = function (db, id, callback) {
 };
 
 module.exports = router;
-
-
-

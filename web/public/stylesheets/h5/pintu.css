@@ -1,0 +1,72 @@
+.canvas {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #666;
+    border: 5px #ccc solid;
+    border-radius: 5px;
+}
+
+.obj {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    transition: all 0.3s;
+}
+
+.obj[at=map_11] {
+    top: 0px;
+    left: 0px;
+}
+
+.obj[at=map_12] {
+    top: 0px;
+    left: 100px;
+}
+
+.obj[at=map_13] {
+    top: 0px;
+    left: 200px;
+}
+
+.obj[at=map_21] {
+    top: 100px;
+    left: 0px;
+}
+
+.obj[at=map_22] {
+    top: 100px;
+    left: 100px;
+}
+
+.obj[at=map_23] {
+    top: 100px;
+    left: 200px;
+}
+
+.obj[at=map_31] {
+    top: 200px;
+    left: 0px;
+}
+
+.obj[at=map_32] {
+    top: 200px;
+    left: 100px;
+}
+
+.obj[at=map_33] {
+    top: 200px;
+    left: 200px;
+}
+.hide{
+    display: none;
+}
