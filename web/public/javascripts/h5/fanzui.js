@@ -7,6 +7,8 @@ $(document).ready(function(){
   ];
   $('.a').click(function(){
     $('.btn').hide();
+    $('.title').hide();
+    $('h3').hide();
     $('.pic').attr('class','pic hide');
     $('#liangmin').attr('class','pic');
     $('.msg').text(msg[0]);
@@ -14,6 +16,8 @@ $(document).ready(function(){
   });
   $('.b').click(function(){
     $('.btn').hide();
+    $('.title').hide();
+    $('h3').hide();
     $('.pic').attr('class','pic hide');
     $('#jianmin').attr('class','pic');
     $('.msg').text(msg[1]);
@@ -21,6 +25,8 @@ $(document).ready(function(){
   });
   $('.c').click(function(){
     $('.btn').hide();
+    $('.title').hide();
+    $('h3').hide();
     $('.pic').attr('class','pic hide');
     $('#zuimin').attr('class','pic');
     $('.msg').text(msg[2]);
@@ -28,6 +34,8 @@ $(document).ready(function(){
   });
   $('.d').click(function(){
     $('.btn').hide();
+    $('.title').hide();
+    $('h3').hide();
     $('.pic').attr('class','pic hide');
     $('#liangmin').attr('class','pic');
     $('.msg').text(msg[3]);
