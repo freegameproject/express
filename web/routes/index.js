@@ -279,6 +279,51 @@ router.get('/h5/pintu', function (req, res, next) {
     res.render('h5/pintu', {title: '拼图游戏'});
 });
 
+
+
+router.get('/h5/daheng/:id', function (req, res, next) {
+  var id = req.params.id;
+  if (id.length === 24) {
+      MongoClient.connect(mongoUrl, function (err, db) {
+          assert.equal(null, err);
+          db.collection('names').find({'_id': ObjectId(id)}).toArray(function (err, arr) {
+              if (err) {
+                  res.render('err', {err: err});
+              } else {
+                  if (arr.length > 0) {
+                      res.render('h5/daheng', {name: arr[0].name});
+                  } else {
+                      res.render('404', {});
+                  }
+              }
+              db.close();
+          });
+      });
+  } else {
+      res.render('404', {});
+  }
+});
+router.get('/h5/daheng', function (req, res, next) {
+    res.render('h5/daheng_make', {title: '神秘大亨'});
+});
+
+router.post('/h5/daheng', function (req, res, next) {
+    var name = req.body.name;
+
+
+    MongoClient.connect(mongoUrl, function (err, db) {
+        assert.equal(null, err);
+        db.collection('names').insertOne({
+            name: name,
+        }, function (err, result) {
+            assert.equal(err, null);
+            console.log(result);
+            res.redirect('/h5/daheng/'+result.insertedId);
+            db.close();
+        });
+    });
+});
+
 var findRestaurants = function (db, callback) {
     db.collection('blogs').find({}).toArray(function (err, arr) {
         callback(arr);

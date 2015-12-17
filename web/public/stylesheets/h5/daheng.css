@@ -1,0 +1,36 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.banner{
+  width: 100%;
+  margin: auto;
+}
+.box{
+  width: 94%;
+  margin: auto;
+}
+.daheng_title{
+  color: #1e1e1e;
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+  margin: 20px auto;
+  line-height: 1.5em;
+}
+.full{
+  width: 100%;
+  text-align: center;
+}
+img{
+  max-width: 100%;
+  margin: 20px auto;
+}
+.txt_right{
+  text-align: right;
+  color: #808080;
+  font-size: 14px;
+}
+.btn{
+  margin: 20px auto;
+}

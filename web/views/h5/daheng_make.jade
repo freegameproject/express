@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title='逼美联储降息，帮你上头条'
+    meta(name="viewport",content="initial-scale=2.0,maximum-scale=1,user-scalable=no")
+    link(rel='stylesheet', href='/stylesheets/h5/daheng.css')
+    script(src='/javascripts/jquery.min.js')
+    script(src="/javascripts/bootstrap.min.js")
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+  body
+    img.banner(src='/images/daheng/banner.png')
+    div.box
+      div.daheng_title
+        逼迫美联储，帮你上头条
+      form(method="post",action="/h5/daheng")
+        div.form-group
+          label(for="name")
+          input#name.form-control(type="text",name="name",required,placeholder="您的名字")
+          button.btn.btn-default(type="submit")='立即生成我的新闻页面'
+      div.full
+        img(src='/images/daheng/logo.png')
+        img.hide(src='http://img.users.51.la/18720145.asp')
+
+    script(src='/javascripts/h5/daheng.js')
