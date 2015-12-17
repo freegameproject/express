@@ -306,6 +306,9 @@ router.get('/h5/daheng/:id', function (req, res, next) {
 router.get('/h5/daheng', function (req, res, next) {
     res.render('h5/daheng_make', {title: '神秘大亨'});
 });
+router.get('/h5/fanzui', function (req, res, next) {
+    res.render('h5/fanzui', {title: '测试你是否是罪犯'});
+});
 
 router.post('/h5/daheng', function (req, res, next) {
     var name = req.body.name;

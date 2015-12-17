@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    title=title
+    meta(name="viewport",content="initial-scale=2.0,maximum-scale=1,user-scalable=no")
+    link(rel='stylesheet', href='/stylesheets/h5/fanzui.css')
+    script(src='/javascripts/jquery.min.js')
+    script(src="/javascripts/bootstrap.min.js")
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+  body
+    img.banner(src='/images/daheng/banner.png')
+    div.box
+      div.title
+        测试你是否是犯罪贩子
+      h3
+        你经常翻墙上外国网站吗？
+      div.form
+        div.form-group
+          button.a.btn.btn-primary='以前翻过，现在不翻了。'
+        div.form-group
+          button.b.btn.btn-warning='没翻过，现在正在研究怎么翻。'
+        div.form-group
+          button.c.btn.btn-danger='老子现在就翻墙呢！'
+        div.form-group
+          button.d.btn.btn-success='从未翻过墙'
+      div.full
+        img.hide(src='/images/daheng/logo.png')
+        img#liangmin.hide.pic(src='/images/fanzui/liangmin.png')
+        img#zuimin.hide.pic(src='/images/fanzui/zuimin.png')
+        img#jianmin.hide.pic(src='/images/fanzui/jianmin.png')
+        img.hide(src='http://img.users.51.la/18720145.asp')
+      div.full
+        p.msg
+      div.full
+        p
+          点击右上角，别忘记分享哦，亲！
+    script(src='/javascripts/h5/fanzui.js')

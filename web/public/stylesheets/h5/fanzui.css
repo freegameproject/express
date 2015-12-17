@@ -1,0 +1,33 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.banner{
+  width: 100%;
+  margin: auto;
+}
+.box{
+  width: 94%;
+  margin: auto;
+}
+.full{
+  width: 100%;
+  text-align: center;
+}
+.title,h3{
+  width: 100%;
+  margin: 20px;
+  text-align: center;
+}
+.form{
+  width: 100%;
+  text-align: center;
+}
+img{
+  max-width: 100%;
+  margin: 20px auto;
+}
+.btn{
+  width: 80%;
+  margin: auto;
+}
