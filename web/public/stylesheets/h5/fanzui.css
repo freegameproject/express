@@ -9,22 +9,19 @@
 .box{
   width: 94%;
   margin: auto;
+  text-align: center;
 }
 .full{
   width: 100%;
   text-align: center;
 }
-.title,h3{
-  width: 100%;
+.title{
   margin: 20px;
-  text-align: center;
-}
-.form{
-  width: 100%;
   text-align: center;
 }
 img{
   max-width: 100%;
+  width: 100%;
   margin: 20px auto;
 }
 .btn{
