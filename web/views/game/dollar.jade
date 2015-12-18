@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    title=title
+    meta(name="viewport",content="initial-scale=2.0,maximum-scale=1,user-scalable=no")
+    link(rel='stylesheet', href='/stylesheets/game/dollar.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    script(src='/javascripts/jquery.min.js')
+    script(src="/javascripts/bootstrap.min.js")
+    script(src="/javascripts/game/dollar.js")
+  body
+    div#time
+    div#v
+    diy.logo_border
+      img.logo(src="/images/game/dollar/logo.png")
+    div#canvas
+    - for (var i = 0; i < 1000; ++i) {
+      img.dollar(src="/images/game/dollar/Usdollar100front.jpg")
+    - }
+    div(style="margin:10px 0px 0px 0px;line-height:25px;")
+    div#gameover
+      div.msg
+        p
+          右上角分享战果吧
+        p
+          span
+            我10秒数了
+          span#clicknum
+          span='张'
+        p
+          平均
+          span#clicks
+          张/秒
+        p
+          平均
+          span#sclick
+          秒/张
+      button(ontouchstart="restart()")
+        重新开始
+    div#gamestart
+      div.msg
+        p
+          玩法
+        p
+          以最快的速度点击美元！
+      button(ontouchstart="restart()")
+        开始游戏！
+    div#d
+    img#dollar(style="display:none;",src="/images/game/dollar/Usdollar100front.jpg")
