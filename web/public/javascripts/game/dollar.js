@@ -5,10 +5,10 @@ $('#canvas').hide();
 function gameover(){
   $("#gameover").show();
   $('#canvas').hide();
-  document.title="我20秒数了"+v+"张美元，平均数一张美元才用"+(21/v).toFixed(2)+"秒！";
+  $(document).attr('title',"我10秒数了"+v+"张美元，平均数一张美元才用"+(10/v).toFixed(2)+"秒！");
   $("#clicknum").text(v);
-  $("#clicks").text((v/21).toFixed(2));
-  $("#sclick").text((21/v).toFixed(2));
+  $("#clicks").text((v/10).toFixed(2));
+  $("#sclick").text((10/v).toFixed(2));
 }
 
 function restart(){
@@ -18,7 +18,6 @@ function restart(){
   v=0;
   time=11;
   loop=true;
-  //var left=parseInt((document.body.scrollWidth-280)/2);
   $("#v").text(v);
 }
 
