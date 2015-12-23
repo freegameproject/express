@@ -1,0 +1,22 @@
+extends ../demolayout
+block content
+  link(rel='stylesheet/less', href='/stylesheets/demo/mz.less')
+  div.save_pan
+    img#face.face()
+    p
+      长按图片，选择保存。
+    p
+      右上角分享到朋友圈。
+    button.restart='重新制作'
+  div.make_pan
+    canvas#canvas.box
+    label(for='upload')='up'
+    input#upload(type='file')
+    img.mz.btn(src='/images/demo/1.png')
+    img.mz.btn(src='/images/demo/2.png')
+    img.mz.btn(src='/images/demo/3.png')
+    img.mz.btn(src='/images/demo/4.png')
+
+    input.single-slider(type="hidden",value="50")
+    button.save='保存图片'
+  script(src='/javascripts/demo/mz.js')

@@ -6,9 +6,13 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var games = require('./routes/games');
+var admin = require('./routes/admin');
+var blog = require('./routes/blog');
 var app = express();
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+app.use(favicon(path.join(__dirname, 'public/favicon.ico')));
+
 app.use(session({
     secret: 'wb',
     store: new MongoStore({url: 'mongodb://localhost/web'})
@@ -25,6 +29,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/game', games);
 app.use('/users', users);
+app.use('/admin', admin);
+app.use('/blog', blog);
+
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     err.status = 404;

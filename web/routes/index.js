@@ -339,4 +339,10 @@ var findDocById = function (db, id, callback) {
     });
 };
 
+router.get('/demo/:id', function (req, res, next) {
+    var id = req.params.id;
+    res.render('demo/'+id, {});
+});
+
+
 module.exports = router;
