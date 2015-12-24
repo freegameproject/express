@@ -1,8 +1,11 @@
 $(document).ready(function(){
     $(document).attr('title','圣诞帽头像生成器');
+    var zoom=3;
     var loop=false;
-    var width=$(document).width()*0.8;
+    var width=$(document).width()*0.8*zoom;
     var height=width;
+    $('#face').css('width','80%');
+
     var bgimg=new Image();
     mzimg=new Image();
     mzimg.src='/images/demo/1.png';
@@ -13,8 +16,12 @@ $(document).ready(function(){
       h:0
     }
     mzimg=new Image();
+
+
+
     $('canvas').css('width',width+'px');
     $('canvas').css('height',width+'px');
+    $('canvas').css('zoom',0.1*zoom);
     $('canvas').attr('width',width);
     $('canvas').attr('height',height);
     //
@@ -56,8 +63,15 @@ $(document).ready(function(){
       var touch = event.touches[0]; //获取第一个触点
       var x = Number(touch.pageX); //页面触点X坐标
       var y = Number(touch.pageY); //页面触点Y坐标
+
+      x*=zoom;
+      y*=zoom;
+
       x-=$(document).width()*0.1;
       y-=$('header').height();
+
+
+
       wh=$('.single-slider').val();
       mz.x=x;
       mz.y=y;
