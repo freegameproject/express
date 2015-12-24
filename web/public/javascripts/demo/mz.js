@@ -89,7 +89,7 @@ $(document).ready(function(){
       $('#face').attr('src',img64base);
       $('.save_pan').show();
       $('.make_pan').hide();
-      $(document).attr('title','我刚用帽子生成器做了一个头像，你也来做一个吧。');
+      $(document).attr('title','让你的头像添加一个圣诞帽');
     })
     $('.restart').on("touchstart", function(){
       $('.save_pan').hide();
