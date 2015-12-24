@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $(document).attr('title','圣诞帽头像生成器');
     var loop=false;
-    var width=$(document).width();
+    var width=$(document).width()*0.8;
     var height=width;
     var bgimg=new Image();
     mzimg=new Image();
