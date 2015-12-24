@@ -56,6 +56,8 @@ $(document).ready(function(){
       var touch = event.touches[0]; //获取第一个触点
       var x = Number(touch.pageX); //页面触点X坐标
       var y = Number(touch.pageY); //页面触点Y坐标
+      x-=$(document).width()*0.1;
+      y-=$('header').height();
       wh=$('.single-slider').val();
       mz.x=x;
       mz.y=y;
